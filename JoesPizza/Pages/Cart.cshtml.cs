@@ -51,6 +51,9 @@ namespace JoesPizza.Pages
             return RedirectToPage("Cart");
         }
 
+
+
+
         public IActionResult OnGetDelete(string id)
         {
             cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");

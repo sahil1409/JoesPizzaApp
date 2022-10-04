@@ -48,7 +48,7 @@ namespace JoesPizza.Models
                 new Product
                 {
                     Id = "6",
-                    Name = "Tandoori Paneer",
+                    Name = "Veg Supreme",
                     Price = 400,
                     Photo = "https://www.dominos.co.in/files/items/PrimeLoadedL.jpg"
                 }

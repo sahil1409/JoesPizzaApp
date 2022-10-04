@@ -85,7 +85,9 @@
                 <div class="caption">
                     <h5 class="shop-item-title">@product.Name</h5>
                     <p class="shop-item-price">₹@product.Price</p>
-                    <a style="text-decoration:none; color: black;" asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id"><button style="background-color:#90EE90;" style type="submit" class="pull-right">Add to Cart <i class="fa fa-shopping-cart"></i></button></a>
+                    <a style="text-decoration:none; color: black;" asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">
+                        <button style="background-color:#90EE90;" style type="submit" class="pull-right">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                    </a>
                     <p>Available</p>
                 </div>
 

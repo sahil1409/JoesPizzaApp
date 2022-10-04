@@ -1,0 +1,61 @@
+﻿@page
+@model JoesPizza.Pages.CartModel
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href=" ~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MyMainLayOut.css" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <title>Cart</title>
+</head>
+<body>
+
+    <h2>Cart</h2>
+    <form method="post" asp-page="cart" asp-page-handler="update">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align:center; vertical-align: middle;">Remove from cart</th>
+                    <th style="text-align:center; vertical-align: middle;">Pizza</th>
+                    <th style="text-align:center; vertical-align: middle;">Price</th>
+                    <th style="text-align:center; vertical-align: middle;">Quantity <input class="btn btn-info" type="submit" value="Update" /></th>
+                    <th style="text-align:center; vertical-align: middle;">Sub Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.cart)
+            {
+                    <tr align="center" style="vertical-align: middle;">
+                        <td align="center" style="vertical-align: middle;">
+                            <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id"><i class="fa fa-close" style="font-size:25px;color:red"></i></a>
+                    </td>
+                    <td style="vertical-align: middle;">@item.Product.Name     <img src="@item.Product.Photo" width="auto" height="100" /></td>
+                    <td style="vertical-align: middle;">₹@item.Product.Price</td>
+                        <td style="vertical-align: middle;"><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                    <td style="vertical-align: middle;">
+                            ₹@(item.Product.Price * item.Quantity)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4" align="right">Total</td>
+                <td align="center">₹@Model.Total</td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <a asp-page="index" class="btn btn-warning">Continue Shopping</a>
+    <a style="float:right;" asp-page="checkout" class="btn btn-success">Checkout >></a>
+
+</body>
+</html>

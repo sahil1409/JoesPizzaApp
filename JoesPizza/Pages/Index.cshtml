@@ -1,0 +1,97 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div id="nav-menus">
+
+            <ul class="nav nav-pills" style="display: inline-block;">
+                <li class="link active"><a style="border-radius:5px;" href="/Index">Home</a></li>
+                <li class="link"><a style="border-radius:5px;" href="/Contact">Contact</a></li>
+                <li class="link"><a style="border-radius:5px;" href="/About">About</a></li>
+            </ul>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img style="height: 500px; width: 100%;" src="https://images.deliveryhero.io/image/fd-pk/LH/uv9g-hero.jpg" alt="First slide">
+            <div class="carousel-caption">
+                <h1 style="color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-family: 'Segoe Print'"><b>Cheese Burst Pizza</b></h1>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height: 500px; width: 100%;" src="https://s1.1zoom.me/prev/500/499725.jpg" alt="Second slide">
+            <div class="carousel-caption">
+                <h1 style="color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-family: 'Segoe Print'"><b>Veg Supreme Pizza</b></h1>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height: 500px; width: 100%;" src="https://insanelygoodrecipes.com/wp-content/uploads/2022/04/Homemade-Pizza-with-Pepperoni-and-Cheese.jpg" alt="Third slide">
+            <div class="carousel-caption">
+                <h1 style="color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-family: 'Segoe Print'"><b>Pepperoni Pizza</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Our Menu <small>Trending</small></h2>
+        </div>
+
+    </div>
+</div>
+
+<div class="row product-container">
+
+    @foreach (var product in Model.Products)
+    {
+
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+            <div class="thumbnail product-item" style="height:360px">
+
+                <img class="img-responsive" title="Click to View Product detail"
+                 style="cursor:pointer;height:220px;width:auto"
+                 src="@product.Photo" />
+
+                <div class="caption">
+                    <h5 class="shop-item-title">@product.Name</h5>
+                    <p class="shop-item-price">₹@product.Price</p>
+                    <a style="text-decoration:none; color: black;" asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id"><button style="background-color:#90EE90;" style type="submit" class="pull-right">Add to Cart <i class="fa fa-shopping-cart"></i></button></a>
+                    <p>Available</p>
+                </div>
+
+            </div>
+        </div>
+
+    }
+
+</div>
